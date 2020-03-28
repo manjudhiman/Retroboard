@@ -1,0 +1,13 @@
+.sticky {
+  max-width: 15em;
+  word-wrap: break-word;
+  cursor: pointer;
+  float: left;
+  width: 47%;
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+  background-color: #ccffff;
+  border: 1px solid #ccffff;
+  border-color: black;
+}
