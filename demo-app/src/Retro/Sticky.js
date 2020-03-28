@@ -4,15 +4,13 @@ import './Sticky.css'
 
 
 const Sticky = props => {
-  console.log("*(**dd)" , props.val);
+  console.log("*(**dd)" , props.text.value);
   return(
     <div>
-     <input type="text" onChange={props.changed} className="sticky" value= {props.val.value || ''} />
+     <input type="text" onChange={props.changed} className="sticky" value= {props.text.value || ''} />
      </div>
 
   )
-
-
 }
 
 export default Sticky;

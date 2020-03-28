@@ -4,24 +4,45 @@ import Sticky from './Sticky';
 import './Well.css';
 
 const Well = () => {
-  const [initialText, updatedText] = useState({value: '', showPerson: false, count: 1});
+  const [stickyPoints, updateStickyPoints] = useState(
+    {
+      0: {
+        value: '',
+      },
+      1: {
+        value: '',
+      }
+    }
+
+  );
 
 
   const addHandler = function(){
-      const value = {...initialText}
-      console.log("**" + JSON.stringify(value));
-      value.count = value.count + 1
+    const points = {...stickyPoints}
+    updateStickyPoints(
+      ...stickyPoints,
+    )
+  }
 
-      updatedText(value)
-    }
+  const updateText = (index,text) => {
+    let points = {...stickyPoints}
+    points[index].value = text;
+    updateStickyPoints(
+      points
+    )
+  }
 
+  const texts = (points) => {
+    return Object.keys(points).map((key) => {
+          return <Sticky text={points[key]} changed={(e) => updateText(key,e.target.value) }/>
+  })
+};
 
   return (
     <div>
     <h3>Went well </h3>
-      <IoIosAdd onClick={addHandler} />
-      <Sticky  val={initialText} changed={(e) => updatedText({value: e.target.value}) }/>
-
+    <IoIosAdd onClick={addHandler} />
+    {texts(stickyPoints)}
     </div>
   );
 }
