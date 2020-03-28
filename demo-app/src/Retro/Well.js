@@ -8,9 +8,8 @@ const Well = () => {
 
 
   const addHandler = function(){
-      const value = [...initialText]
-      console.log("**");
-      value.showPerson = !initialText
+      const value = {...initialText}
+      console.log("**" + JSON.stringify(value));
       updatedText(value)
     }
 
