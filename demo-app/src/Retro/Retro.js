@@ -1,13 +1,15 @@
 import React from 'react';
-import Well from './Retro/Well';
+import Notwell from './Retro/Notwell'
+import Well from './Retro/Well'
 
 
 const Retro = props => {
   return(
-    <Well />
+    <div>
+      <Well /> | <Notwell />
+    </div>
   )
 
 }
-
 
 export default Retro;

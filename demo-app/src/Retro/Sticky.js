@@ -6,7 +6,7 @@ import './Sticky.css'
 const Sticky = props => {
   console.log("*(**dd)" , props.text.value);
   return(
-    <div>
+    <div className="stickycss">
      <input type="text" onChange={props.changed} className="sticky" value= {props.text.value || ''} />
      </div>
 
