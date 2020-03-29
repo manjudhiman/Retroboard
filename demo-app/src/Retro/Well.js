@@ -42,7 +42,7 @@ const Well = () => {
 
   return (
     <div className="well">
-    <h3>Went well </h3>
+    <h3 className="text-css">Went well </h3>
     <IoIosAdd onClick={addHandler} />
     {texts(stickyPoints)}
     </div>

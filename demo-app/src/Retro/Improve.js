@@ -3,7 +3,7 @@ import { IoIosAdd } from "react-icons/io";
 import Sticky from './Sticky';
 import './Well.css';
 
-const Notwell = () => {
+const Improve = () => {
   const [stickyPoints, updateStickyPoints] = useState(
     {
       0: {
@@ -42,7 +42,7 @@ const Notwell = () => {
 
   return (
     <div className="well">
-    <h3 className="text-css">Didn't Go Well </h3>
+    <h3 className="text-css">To Improve </h3>
     <IoIosAdd onClick={addHandler} />
     {texts(stickyPoints)}
     </div>
@@ -51,4 +51,4 @@ const Notwell = () => {
 
 
 
-export default Notwell;
+export default Improve;
