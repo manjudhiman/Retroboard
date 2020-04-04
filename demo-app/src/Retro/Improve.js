@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { IoIosAdd } from "react-icons/io";
 import Sticky from './Sticky';
 import './Well.css';
+import Button from 'react-bootstrap/Button';
 
 const Improve = () => {
   const [stickyPoints, updateStickyPoints] = useState(
@@ -43,7 +44,7 @@ const Improve = () => {
   return (
     <div className="well">
     <h3 className="text-css">To Improve </h3>
-    <IoIosAdd onClick={addHandler} />
+    <Button variant="outline-dark" onClick={addHandler}>   +   </Button>
     {texts(stickyPoints)}
     </div>
   );

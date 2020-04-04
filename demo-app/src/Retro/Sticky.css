@@ -4,13 +4,13 @@
   cursor: pointer;
   float: left;
   width: 100%;
-  height: 20px;
   overflow: hidden;
   position: relative;
   background-color: lightsalmon;
   border: 1px solid #ccffff;
   border-color: black;
   font-size: small;
+  margin: 10px;
 }
 
 .stickycss {
