@@ -6,6 +6,7 @@ import Continue from './Continue'
 import './Retro.css'
 import Sticky from "./Sticky";
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 
 const Retro = () => {
   const [stickyPoints, updateStickyPoints] = useState(
@@ -19,10 +20,16 @@ const Retro = () => {
 
   useEffect(() => {
     console.log("hi")
-    axios.get("http://demo4219728.mockable.io/retro-info")
-    .then(response => {
-      updateStickyPoints(response.data)
-    })
+
+    // This is required to bypass the cors-origin request
+    var proxyUrl = 'https://aqueous-fjord-87609.herokuapp.com/',
+    targetUrl = 'https://fast-brook-22761.herokuapp.com/retro_info?retro=1'
+    fetch(proxyUrl + targetUrl)
+    .then(blob => blob.json())
+    .then(data => {
+      console.log(" = " ,data);
+      updateStickyPoints(data)
+  });
   },[]);
 
   const addHandler = function(key){
@@ -52,10 +59,39 @@ const Retro = () => {
     if (points == null) {
       return
     }
+    console.log("***texts ");
+    console.log(points)
+    console.log("===")
 
     return Object.keys(points).map((key) => {
       return <Sticky text={points[key]} changed={(e) => updateText(key,e.target.value, k) }/>
     })
+  };
+
+  const saveButton =() => {
+    console.log("save button clicked!")
+    console.log(stickyPoints);
+    const json1 = {...stickyPoints}
+    // debugger;
+    const json2 = JSON.stringify(json1)
+    json2.replace(/".+?"/g, s => s.toString())
+    console.log("json ", json2)
+    const header = {
+
+      "Content-Type": "application/json"
+    }
+
+    // This is required to bypass the cors-origin error.
+    var proxyUrl = 'https://aqueous-fjord-87609.herokuapp.com/',
+    targetUrl = 'https://fast-brook-22761.herokuapp.com/retro_info?retro=1'
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: json2
+    };
+    fetch(proxyUrl + targetUrl, requestOptions)
+  
+
   };
 
   return(
@@ -64,6 +100,7 @@ const Retro = () => {
        <Notwell props={stickyPoints.notwell} addHandler={() => addHandler('notwell')} texts={()=>texts(stickyPoints.notwell,'notwell')}/>
        <Improve props= {stickyPoints.improve} addHandler={() => addHandler('improve')} texts={()=>texts(stickyPoints.improve, 'improve')}/>
         <Continue props={stickyPoints.continue} addHandler={() => addHandler('continue')} texts={()=>texts(stickyPoints.continue, 'continue')}/>
+        <Button className="save" variant="primary" size="sm" onClick={ saveButton }>Save</Button>
     </div>
   )
 

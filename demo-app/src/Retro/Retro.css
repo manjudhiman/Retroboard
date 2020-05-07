@@ -5,3 +5,7 @@
 .container {
   display: inline-flex;
 }
+
+.save {
+  height: 30px
+}
