@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, fragment} from 'react';
 import Notwell from './Notwell'
 import Well from './Well'
 import Improve from './Improve'
@@ -17,10 +17,7 @@ const Retro = () => {
   }
   );
 
-
   useEffect(() => {
-    console.log("hi")
-
     // This is required to bypass the cors-origin request
     var proxyUrl = 'https://aqueous-fjord-87609.herokuapp.com/',
     targetUrl = 'https://fast-brook-22761.herokuapp.com/retro_info?retro=1'
@@ -63,8 +60,10 @@ const Retro = () => {
     console.log(points)
     console.log("===")
 
-    return Object.keys(points).map((key) => {
-      return <Sticky text={points[key]} changed={(e) => updateText(key,e.target.value, k) }/>
+    return Object.keys(points).map((key, id) => {
+      console.log("key ", key)
+      console.log("id  ", id)
+      return <Sticky text={points[key]} key={id} changed={(e) => updateText(key,e.target.value, k) }/>
     })
   };
 
@@ -76,10 +75,6 @@ const Retro = () => {
     const json2 = JSON.stringify(json1)
     json2.replace(/".+?"/g, s => s.toString())
     console.log("json ", json2)
-    const header = {
-
-      "Content-Type": "application/json"
-    }
 
     // This is required to bypass the cors-origin error.
     var proxyUrl = 'https://aqueous-fjord-87609.herokuapp.com/',
@@ -90,21 +85,26 @@ const Retro = () => {
         body: json2
     };
     fetch(proxyUrl + targetUrl, requestOptions)
-  
+
 
   };
 
   return(
-    <div className="container">
-      <Well props={stickyPoints.well} addHandler={() => addHandler('well')} texts={()=>texts(stickyPoints.well, 'well')}/>
-       <Notwell props={stickyPoints.notwell} addHandler={() => addHandler('notwell')} texts={()=>texts(stickyPoints.notwell,'notwell')}/>
-       <Improve props= {stickyPoints.improve} addHandler={() => addHandler('improve')} texts={()=>texts(stickyPoints.improve, 'improve')}/>
-        <Continue props={stickyPoints.continue} addHandler={() => addHandler('continue')} texts={()=>texts(stickyPoints.continue, 'continue')}/>
-        <Button className="save" variant="primary" size="sm" onClick={ saveButton }>Save</Button>
-    </div>
+    <React.Fragment>
+      <div className="container">
+        <Well props={stickyPoints.well} addHandler={() => addHandler('well')} texts={()=>texts(stickyPoints.well, 'well')}/>
+         <Notwell props={stickyPoints.notwell} addHandler={() => addHandler('notwell')} texts={()=>texts(stickyPoints.notwell,'notwell')}/>
+         <Improve props= {stickyPoints.improve} addHandler={() => addHandler('improve')} texts={()=>texts(stickyPoints.improve, 'improve')}/>
+          <Continue props={stickyPoints.continue} addHandler={() => addHandler('continue')} texts={()=>texts(stickyPoints.continue, 'continue')}/>
+      </div>
+      <div>
+         <Button className="save" variant="primary" size="sm" onClick={ saveButton }>Save</Button>
+      </div>
+    </React.Fragment>
   )
 
 }
 // texts={() => texts(stickyPoints.continue)}
+//
 
 export default Retro;
