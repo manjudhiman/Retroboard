@@ -1,22 +1,24 @@
+/* global $ */
+
 import React, { useState, useEffect, fragment} from 'react';
 import Notwell from './Notwell'
 import Well from './Well'
 import Improve from './Improve'
 import Continue from './Continue'
 import './Retro.css'
-import Sticky from "./Sticky";
-import axios from 'axios';
+import Sticky from './Sticky';
 import Button from 'react-bootstrap/Button';
 
 const Retro = () => {
   const [stickyPoints, updateStickyPoints] = useState(
-    {  well: null,
-    notwell: null,
-    continue: null,
-    improve: null
+      {  well: null,
+        notwell: null,
+        continue: null,
+        improve: null
   }
   );
 
+  const [error, updateError] = useState(false)
   useEffect(() => {
     // This is required to bypass the cors-origin request
     var proxyUrl = 'https://aqueous-fjord-87609.herokuapp.com/',
@@ -56,9 +58,6 @@ const Retro = () => {
     if (points == null) {
       return
     }
-    console.log("***texts ");
-    console.log(points)
-    console.log("===")
 
     return Object.keys(points).map((key, id) => {
       console.log("key ", key)
@@ -68,14 +67,8 @@ const Retro = () => {
   };
 
   const saveButton =() => {
-    console.log("save button clicked!")
-    console.log(stickyPoints);
-    const json1 = {...stickyPoints}
-    // debugger;
-    const json2 = JSON.stringify(json1)
+    const json2 = JSON.stringify({...stickyPoints})
     json2.replace(/".+?"/g, s => s.toString())
-    console.log("json ", json2)
-
     // This is required to bypass the cors-origin error.
     var proxyUrl = 'https://aqueous-fjord-87609.herokuapp.com/',
     targetUrl = 'https://fast-brook-22761.herokuapp.com/retro_info?retro=1'
@@ -85,9 +78,22 @@ const Retro = () => {
         body: json2
     };
     fetch(proxyUrl + targetUrl, requestOptions)
-
-
+    .then(response => {
+      console.log("response ", response.status);
+      if (response.status == '204') {
+        console.log("Saved!")
+        updateError(false)
+      }
+    },
+    (error) => {
+      updateError(true)
+    })
   };
+
+  let savebtn = <Button className="save" variant="primary" size="sm" onClick={saveButton}>Try Again!</Button>
+  if (!error) {
+     savebtn  = <Button className="save" variant="primary" size="sm" onClick={saveButton }>Save</Button>
+   }
 
   return(
     <React.Fragment>
@@ -98,13 +104,10 @@ const Retro = () => {
           <Continue props={stickyPoints.continue} addHandler={() => addHandler('continue')} texts={()=>texts(stickyPoints.continue, 'continue')}/>
       </div>
       <div>
-         <Button className="save" variant="primary" size="sm" onClick={ saveButton }>Save</Button>
+        {savebtn}
       </div>
     </React.Fragment>
   )
-
 }
-// texts={() => texts(stickyPoints.continue)}
-//
 
 export default Retro;
