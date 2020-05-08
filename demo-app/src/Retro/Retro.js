@@ -21,7 +21,6 @@ const Retro = () => {
   );
 
   const [error, updateError] = useState(false)
-  const [loadSpinner, updateSpinnerload] = useState(false)
   const [dataLoaded, updateDataLoadedState] = useState(false)
   useEffect(() => {
     // This is required to bypass the cors-origin request
@@ -71,7 +70,6 @@ const Retro = () => {
   };
 
   const saveButton =() => {
-    updateSpinnerload(true)
     const json2 = JSON.stringify({...stickyPoints})
     json2.replace(/".+?"/g, s => s.toString())
     // This is required to bypass the cors-origin error.
