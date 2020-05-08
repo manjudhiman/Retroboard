@@ -29,14 +29,12 @@ const Retro = () => {
     axios.get(proxyUrl + targetUrl)
     .then(response => response.data)
     .then(data => {
-      console.log(" = " ,data);
       updateStickyPoints(data)
   });
   },[]);
 
   const addHandler = function(key){
     const points = {...stickyPoints}
-    console.log("**points ", points)
     const p = points[key]
     let keys = Object.keys(p)
     let last_key = parseInt(keys[keys.length-1])
@@ -91,7 +89,6 @@ const Retro = () => {
       }
     })
     .catch(function(error){
-      console.log("error ", error)
       updateError(true)
     })
   };
@@ -110,10 +107,10 @@ const Retro = () => {
     <React.Fragment>
       {banner}
       <div className="container">
-        <Well props={stickyPoints.well} addHandler={() => addHandler('well')} texts={()=>texts(stickyPoints.well, 'well')}/>
-         <Notwell props={stickyPoints.notwell} addHandler={() => addHandler('notwell')} texts={()=>texts(stickyPoints.notwell,'notwell')}/>
-         <Improve props= {stickyPoints.improve} addHandler={() => addHandler('improve')} texts={()=>texts(stickyPoints.improve, 'improve')}/>
-          <Continue props={stickyPoints.continue} addHandler={() => addHandler('continue')} texts={()=>texts(stickyPoints.continue, 'continue')}/>
+      <Well props={stickyPoints.well} addHandler={() => addHandler('well')} texts={()=>texts(stickyPoints.well, 'well')}/>
+       <Notwell props={stickyPoints.notwell} addHandler={() => addHandler('notwell')} texts={()=>texts(stickyPoints.notwell,'notwell')}/>
+       <Improve props= {stickyPoints.improve} addHandler={() => addHandler('improve')} texts={()=>texts(stickyPoints.improve, 'improve')}/>
+        <Continue props={stickyPoints.continue} addHandler={() => addHandler('continue')} texts={()=>texts(stickyPoints.continue, 'continue')}/>
       </div>
       <div>
         {savebtn}
