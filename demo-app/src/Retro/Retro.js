@@ -8,6 +8,8 @@ import Continue from './Continue'
 import './Retro.css'
 import Sticky from './Sticky';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
+import Banner from 'react-js-banner';
 
 const Retro = () => {
   const [stickyPoints, updateStickyPoints] = useState(
@@ -19,12 +21,14 @@ const Retro = () => {
   );
 
   const [error, updateError] = useState(false)
+  const [loadSpinner, updateSpinnerload] = useState(false)
+  const [dataLoaded, updateDataLoadedState] = useState(false)
   useEffect(() => {
     // This is required to bypass the cors-origin request
     var proxyUrl = 'https://aqueous-fjord-87609.herokuapp.com/',
     targetUrl = 'https://fast-brook-22761.herokuapp.com/retro_info?retro=1'
-    fetch(proxyUrl + targetUrl)
-    .then(blob => blob.json())
+    axios.get(proxyUrl + targetUrl)
+    .then(response => response.data)
     .then(data => {
       console.log(" = " ,data);
       updateStickyPoints(data)
@@ -67,6 +71,7 @@ const Retro = () => {
   };
 
   const saveButton =() => {
+    updateSpinnerload(true)
     const json2 = JSON.stringify({...stickyPoints})
     json2.replace(/".+?"/g, s => s.toString())
     // This is required to bypass the cors-origin error.
@@ -75,20 +80,28 @@ const Retro = () => {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: json2
+
     };
-    fetch(proxyUrl + targetUrl, requestOptions)
+    axios.post(proxyUrl + targetUrl, json2, requestOptions)
     .then(response => {
       console.log("response ", response.status);
       if (response.status == '204') {
         console.log("Saved!")
+        updateDataLoadedState(true)
+
         updateError(false)
       }
-    },
-    (error) => {
+    })
+    .catch(function(error){
+      console.log("error ", error)
       updateError(true)
     })
   };
+
+ let banner = <div> </div>
+ if (dataLoaded) {
+    banner =  <Banner title="Changes Saved!!" className="banner" visibleTime={1000}/>
+  }
 
   let savebtn = <Button className="save" variant="primary" size="sm" onClick={saveButton}>Try Again!</Button>
   if (!error) {
@@ -97,6 +110,7 @@ const Retro = () => {
 
   return(
     <React.Fragment>
+      {banner}
       <div className="container">
         <Well props={stickyPoints.well} addHandler={() => addHandler('well')} texts={()=>texts(stickyPoints.well, 'well')}/>
          <Notwell props={stickyPoints.notwell} addHandler={() => addHandler('notwell')} texts={()=>texts(stickyPoints.notwell,'notwell')}/>
