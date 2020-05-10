@@ -9,6 +9,7 @@ import axios from 'axios';
 import Banner from 'react-js-banner';
 import './Retro.css'
 
+// This Container renders the structure of the Retro.
 const Retro = () => {
   const [stickyPoints, updateStickyPoints] = useState(
       {  well: null,
@@ -31,6 +32,7 @@ const Retro = () => {
   });
   },[]);
 
+  //Adds the notes on the retro
   const addHandler = function(key){
     const points = {...stickyPoints}
     const p = points[key]
@@ -65,6 +67,7 @@ const Retro = () => {
     })
   };
 
+  // Saves the notes
   const saveButton =() => {
     const json2 = JSON.stringify({...stickyPoints})
     json2.replace(/".+?"/g, s => s.toString())
