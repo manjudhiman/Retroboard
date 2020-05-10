@@ -23,7 +23,7 @@ const Retro = () => {
   useEffect(() => {
     // This is required to bypass the cors-origin request
     var proxyUrl = 'https://aqueous-fjord-87609.herokuapp.com/',
-    targetUrl = 'https://fast-brook-22761.herokuapp.com/retro_info?retro=5'
+    targetUrl = 'https://fast-brook-22761.herokuapp.com/retro_info?retro=6'
     axios.get(proxyUrl + targetUrl)
     .then(response => response.data)
     .then(data => {
@@ -68,7 +68,7 @@ const Retro = () => {
     json2.replace(/".+?"/g, s => s.toString())
     // This is required to bypass the cors-origin error.
     var proxyUrl = 'https://aqueous-fjord-87609.herokuapp.com/',
-    targetUrl = 'https://fast-brook-22761.herokuapp.com/retro_info?retro=5'
+    targetUrl = 'https://fast-brook-22761.herokuapp.com/retro_info?retro=6'
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
