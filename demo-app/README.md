@@ -16,7 +16,7 @@ Run `npm start` in console and open [http://localhost:3000](http://localhost:300
 ### To run the unit tests
 Run `npm test` in console
 
-Application uses the [Retro api's](https://github.com/manjudhiman/my_api) which is deployed at Heroku(https://fast-brook-22761.herokuapp.com/)
+Application uses the [Retro api's](https://github.com/manjudhiman/my_api) developed using Rails Api, which is deployed at Heroku(https://fast-brook-22761.herokuapp.com/)
 
 ### Future Enhancement
  - Ability to create RetroBoard
