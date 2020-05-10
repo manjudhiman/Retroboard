@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
-import './Well.css';
+import './Styles/Well.css';
 
 const Well = (props) => {
   return (

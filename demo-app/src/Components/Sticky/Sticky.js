@@ -1,5 +1,5 @@
 import React from 'react';
-import './Sticky.css'
+import './Styles/Sticky.css'
 
 
 const Sticky = props => {

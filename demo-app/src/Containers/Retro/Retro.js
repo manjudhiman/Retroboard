@@ -3,7 +3,7 @@ import Notwell from '../../Components/Notwell/Notwell';
 import Well from '../../Components/Well/Well';
 import Improve from '../../Components/Improve/Improve';
 import Continue from '../../Components/Continue/Continue';
-import './Retro.css';
+import './Styles/Retro.css';
 import Sticky from '../../Components/Sticky/Sticky';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
@@ -23,7 +23,7 @@ const Retro = () => {
   useEffect(() => {
     // This is required to bypass the cors-origin request
     var proxyUrl = 'https://aqueous-fjord-87609.herokuapp.com/',
-    targetUrl = 'https://fast-brook-22761.herokuapp.com/retro_info?retro=6'
+    targetUrl = 'https://fast-brook-22761.herokuapp.com/retro_info?retro=7'
     axios.get(proxyUrl + targetUrl)
     .then(response => response.data)
     .then(data => {
@@ -68,7 +68,7 @@ const Retro = () => {
     json2.replace(/".+?"/g, s => s.toString())
     // This is required to bypass the cors-origin error.
     var proxyUrl = 'https://aqueous-fjord-87609.herokuapp.com/',
-    targetUrl = 'https://fast-brook-22761.herokuapp.com/retro_info?retro=6'
+    targetUrl = 'https://fast-brook-22761.herokuapp.com/retro_info?retro=7'
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

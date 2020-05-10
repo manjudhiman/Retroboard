@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
-import './Improve.css';
+import './Styles/Improve.css';
 
 const Improve = (props) => {
 
