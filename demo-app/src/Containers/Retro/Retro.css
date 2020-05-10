@@ -1,0 +1,17 @@
+.test1 {
+  width: 25%;
+}
+
+.container {
+  display: inline-flex;
+}
+
+.save {
+  height: 50px;
+  width: 100px;
+  display: inline-flex;
+}
+ .banner {
+   color: "#FFF";
+   background-color: "green"
+ }
