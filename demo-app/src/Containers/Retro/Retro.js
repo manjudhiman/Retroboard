@@ -1,9 +1,9 @@
 import React, { useState, useEffect, fragment} from 'react';
-import Notwell from '../../Components/Notwell/Notwell'
-import Well from '../../Components/Well/Well'
-import Improve from '../../Components/Improve/Improve'
-import Continue from '../../Components/Continue/Continue'
-import './Retro.css'
+import Notwell from '../../Components/Notwell/Notwell';
+import Well from '../../Components/Well/Well';
+import Improve from '../../Components/Improve/Improve';
+import Continue from '../../Components/Continue/Continue';
+import './Retro.css';
 import Sticky from '../../Components/Sticky/Sticky';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
@@ -102,7 +102,7 @@ const Retro = () => {
       <div className="container">
         <Well notes={stickyPoints.well} addHandler={() => addHandler('well')} texts={()=>texts(stickyPoints.well, 'well')}/>
         <Notwell notes={stickyPoints.notwell} addHandler={() => addHandler('notwell')} texts={()=>texts(stickyPoints.notwell,'notwell')}/>
-       <Improve notes= {stickyPoints.improve} addHandler={() => addHandler('improve')} texts={()=>texts(stickyPoints.improve, 'improve')}/>
+        <Improve notes= {stickyPoints.improve} addHandler={() => addHandler('improve')} texts={()=>texts(stickyPoints.improve, 'improve')}/>
         <Continue notes={stickyPoints.continue} addHandler={() => addHandler('continue')} texts={()=>texts(stickyPoints.continue, 'continue')}/>
       </div>
       <div>
