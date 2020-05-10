@@ -1,13 +1,13 @@
 import React, { useState, useEffect, fragment} from 'react';
-import Notwell from '../../Components/Notwell/Notwell'
-import Well from '../../Components/Well/Well'
-import Improve from '../../Components/Improve/Improve'
-import Continue from '../../Components/Continue/Continue'
-import './Retro.css'
+import Notwell from '../../Components/Notwell/Notwell';
+import Well from '../../Components/Well/Well';
+import Improve from '../../Components/Improve/Improve';
+import Continue from '../../Components/Continue/Continue';
 import Sticky from '../../Components/Sticky/Sticky';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import Banner from 'react-js-banner';
+import './Retro.css'
 
 const Retro = () => {
   const [stickyPoints, updateStickyPoints] = useState(
@@ -96,10 +96,10 @@ const Retro = () => {
     banner =  <Banner title="Changes Saved!!" className="banner" visibleTime={1000}/>
   }
 
-  let savebtn = <Button className="save" variant="primary" size="sm" onClick={saveButton}>Try Again!</Button>
-  if (!error) {
-     savebtn  = <Button className="save" variant="primary" size="sm" onClick={saveButton }>Save</Button>
-   }
+ let savebtn = <Button className="save" variant="primary" size="sm" onClick={saveButton}>Try Again!</Button>
+ if (!error) {
+    savebtn  = <Button className="save" variant="primary" size="sm" onClick={saveButton }>Save</Button>
+  }
 
   return(
     <React.Fragment>
