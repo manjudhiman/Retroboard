@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Retro /> renders correctly 1`] = `
+Array [
+  <div>
+     
+  </div>,
+  <div
+    className="container"
+  >
+    <div
+      className="text-box"
+    >
+      <h3>
+        Went Well 
+      </h3>
+      <button
+        className="btn btn-outline-dark"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+           +   
+      </button>
+    </div>
+    <div
+      className="text-box"
+    >
+      <h3>
+        Didn't Go Well 
+      </h3>
+      <button
+        className="btn btn-outline-dark"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+           +   
+      </button>
+    </div>
+    <div
+      className="text-box"
+    >
+      <h3>
+        To Improve 
+      </h3>
+      <button
+        className="btn btn-outline-dark"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+           +   
+      </button>
+    </div>
+    <div
+      className="text-box"
+    >
+      <h3>
+        To Continue 
+      </h3>
+      <button
+        className="btn btn-outline-dark"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+           +   
+      </button>
+    </div>
+  </div>,
+  <div>
+    <button
+      className="save btn btn-primary btn-sm"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Save
+    </button>
+  </div>,
+]
+`;
