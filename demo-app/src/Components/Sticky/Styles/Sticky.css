@@ -3,11 +3,16 @@
   word-wrap: break-word;
   cursor: pointer;
   float: left;
-  width: 47%;
-  height: 100px;
+  width: 100%;
   overflow: hidden;
   position: relative;
-  background-color: #ccffff;
+  background-color: lightsalmon;
   border: 1px solid #ccffff;
   border-color: black;
+  font-size: small;
+  margin: 10px;
+}
+
+.stickycss {
+  padding: 20px
 }
