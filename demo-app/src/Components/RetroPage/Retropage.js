@@ -1,17 +1,18 @@
 import React, { useState, useEffect, fragment} from 'react';
-import Notwell from '../../Components/Notwell/Notwell';
-import Well from '../../Components/Well/Well';
-import Improve from '../../Components/Improve/Improve';
-import Continue from '../../Components/Continue/Continue';
-import './Styles/Retro.css';
-import Sticky from '../../Components/Sticky/Sticky';
+import  {withRouter } from 'react-router-dom';
+import Notwell from './../Notwell/Notwell';
+import Well from './../Well/Well';
+import Improve from './../Improve/Improve';
+import Continue from './../Continue/Continue';
+import './../../Containers/Retro/Styles/Retro.css';
+import Sticky from './../Sticky/Sticky';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import Banner from 'react-js-banner';
 import { CSVLink } from "react-csv";
 
 
-const Retro = () => {
+const Retropage = (props) => {
   const [stickyPoints, updateStickyPoints] = useState(
       {  well: null,
         notwell: null,
@@ -23,9 +24,11 @@ const Retro = () => {
   const [error, updateError] = useState(false)
   const [dataLoaded, updateDataLoadedState] = useState(false)
   useEffect(() => {
+
+    let retro_number = props.location.search
     // This is required to bypass the cors-origin request
     var proxyUrl = 'https://aqueous-fjord-87609.herokuapp.com/',
-    targetUrl = 'https://fast-brook-22761.herokuapp.com/retro_info?retro=7'
+    targetUrl = 'https://fast-brook-22761.herokuapp.com/retro_info' + retro_number
     axios.get(proxyUrl + targetUrl)
     .then(response => response.data)
     .then(data => {
@@ -130,4 +133,4 @@ const Retro = () => {
   )
 }
 
-export default Retro;
+export default withRouter(Retropage);

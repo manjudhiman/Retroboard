@@ -1,5 +1,6 @@
 .sidebar {
-  background-color: #33B0FF;
+  background-color: #33B0FF !important;
   height: -webkit-fill-available;
-  width: 200px;
+  width: 30px;
+  height: 100%;
 }

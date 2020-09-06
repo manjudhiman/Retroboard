@@ -1,0 +1,20 @@
+.form-container {
+    align-content: center;
+    vertical-align: middle;
+    margin: 15px;
+}
+
+.info {
+   font-size: 15px;
+   
+}
+
+.input {
+    margin: 10px;
+    border-color: black;
+}
+
+.error {
+    margin: 10px;
+    border-color: red;
+}
