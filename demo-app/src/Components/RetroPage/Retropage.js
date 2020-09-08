@@ -4,6 +4,7 @@ import Notwell from './../Notwell/Notwell';
 import Well from './../Well/Well';
 import Improve from './../Improve/Improve';
 import Continue from './../Continue/Continue';
+import Download from './../Download/Download';
 import './../../Containers/Retro/Styles/Retro.css';
 import Sticky from './../Sticky/Sticky';
 import Button from 'react-bootstrap/Button';
@@ -32,6 +33,7 @@ const Retropage = (props) => {
     axios.get(proxyUrl + targetUrl)
     .then(response => response.data)
     .then(data => {
+      console.log("===data ", data)
       updateStickyPoints(data)
   });
   },[]);
@@ -51,12 +53,12 @@ const Retropage = (props) => {
 
   const updateText = (index,text, k) => {
     let points = {...stickyPoints}
-
     points[k][index].value = text;
     updateStickyPoints(
       points
     )
   }
+
 
   const texts = (points, k) => {
     if (points == null) {
@@ -96,9 +98,9 @@ const Retropage = (props) => {
     banner =  <Banner title="Changes Saved!!" className="banner" visibleTime={1000}/>
   }
 
-  let savebtn = <Button className="save" variant="primary" size="sm" onClick={saveButton}>Try Again!</Button>
+  let savebtn = <Button className="save" variant="primary" size="xs-sm" onClick={saveButton}>Try Again!</Button>
   if (!error) {
-     savebtn  = <Button className="save" variant="primary" size="sm" onClick={saveButton }>Save</Button>
+     savebtn  = <Button className="save" variant="primary" size="xs-sm" onClick={saveButton }>Save</Button>
    }
 
    let headers = [
@@ -125,10 +127,12 @@ const Retropage = (props) => {
       </div>
       <div>
         {savebtn}
+        <Download/>
       </div>
-      <CSVLink data={data} headers={headers}>
-  Download me
-</CSVLink>;
+      
+      {/* <CSVLink data={data} headers={headers}> */}
+  {/* Download me
+</CSVLink>; */}
     </React.Fragment>
   )
 }

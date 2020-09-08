@@ -4,6 +4,7 @@ import './Styles/Sidebar.css';
 import Welcome from './../Welcome/Welcome';
 import {withRouter } from 'react-router-dom';
 import AddRetro from './../AddRetro/Addretro';
+import Retrolist from './../RetroList/Retrolist';
 import RetroPage from './../RetroPage/Retropage';
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
@@ -38,7 +39,9 @@ const Sidebar = (props) => {
                     <i className="fa fa-fw fa-device" style={{ fontSize: '1.75em' }} />
                 </NavIcon>
                 <NavText>
+                   <Link to="/retro" >
                     View existing board
+                    </Link>
                 </NavText>
             </NavItem>
         </SideNav.Nav>
@@ -47,9 +50,10 @@ const Sidebar = (props) => {
             <Switch>
                 <Route path="/"  exact component={props => <Welcome />} />
                 <Route path="/create" component={props => <AddRetro />} />
-                <Route path="/retro_info" component={props => <RetroPage/>}  />
-                </Switch>
-            </main>
+                <Route path="/retro_info" component={props => <RetroPage/>}/>
+                <Route path="/retro" component={props=> <Retrolist/>} />
+            </Switch>
+    </main>
     </React.Fragment>
     
     );
