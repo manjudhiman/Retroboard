@@ -61,12 +61,15 @@ const Retropage = (props) => {
 
 
   const texts = (points, k) => {
+    console.log("==points " + JSON.stringify(points));
+    console.log("==k " + k);
     if (points == null) {
       return
     }
 
     return Object.keys(points).map((key, id) => {
-      return <Sticky text={points[key]} key={id} changed={(e) => updateText(key,e.target.value, k) }/>
+       console.log("============id key " + id + " " + key);
+      return  (<Sticky text={points[key]} key={id} id={key} type={k} changed={(e) => updateText(key,e.target.value, k) }/>);
     })
   };
 
@@ -102,19 +105,6 @@ const Retropage = (props) => {
   if (!error) {
      savebtn  = <Button className="save" variant="primary" size="xs-sm" onClick={saveButton }>Save</Button>
    }
-
-   let headers = [
-    { label: "First Name", key: "firstname" },
-    { label: "Last Name", key: "lastname" },
-    { label: "Email", key: "email" }
-  ];
-   
-  let data = [
-    { firstname: "Ahmed", lastname: "Tomi", email: "ah@smthing.co.com" },
-    { firstname: "Raed", lastname: "Labes", email: "rl@smthing.co.com" },
-    { firstname: "Yezzi", lastname: "Min l3b", email: "ymin@cocococo.com" }
-  ];
-   
 
   return(
     <React.Fragment>

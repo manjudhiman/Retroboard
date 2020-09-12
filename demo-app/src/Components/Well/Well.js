@@ -5,7 +5,7 @@ import './Styles/Well.css';
 
 const Well = (props) => {
   return (
-    <div className="text-box">
+    <div className="text-box ">
     <h3>Went Well </h3>
     <Button variant="outline-dark" onClick={props.addHandler}>   +   </Button>
       {props.texts(props.notes, 'well')}

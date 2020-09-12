@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Route, Link, Switch} from 'react-router-dom';
 import './Styles/Sidebar.css';
 import Welcome from './../Welcome/Welcome';
@@ -11,19 +11,30 @@ import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 
 const Sidebar = (props) => {
-    console.log("=props==" + JSON.stringify(props))
+    const [expand, updatedExpand] = useState(false)
+    function clickHandler() {
+        console.log("clickkkkkkk");
+        updatedExpand(!expand)
+
+    };
+
+
+
+    console.log("=props==" + JSON.stringify(props));
+    
     return (
     <React.Fragment>
     <SideNav className="sidebar"
         onSelect={() => {
-            // const to = '/' + selected;
-            // if (location.pathname !== to) {
-            //     history.push(to);
-            // }
+            console.log("clicked@@@")
+            clickHandler()
+           
         }}
+
+        expanded={expand}
     >
         <SideNav.Toggle />
-        <SideNav.Nav defaultSelected="home">
+        <SideNav.Nav defaultSelected="home" >
             <NavItem eventKey="home">
                 <NavIcon>
                     <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />

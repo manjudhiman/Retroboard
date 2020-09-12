@@ -5,7 +5,7 @@ import './Styles/Header.css';
 const Header = () => {
   return (
     <div className="header">
-    <h2> Retro Board </h2>
+    <h2 className="text-size"> Retro Board </h2>
     </div>
   );
 }
